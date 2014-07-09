@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://greglturnquist.com/test"
+		   targetNamespace="http://greglturnquist.com/test">
+
+	<xs:element name="sendNetworkEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hostname" type="xs:string" />
+				<xs:element name="severity" type="xs:integer" />
+				<xs:element name="description"  type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ackNetworkEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
