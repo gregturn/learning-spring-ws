@@ -1,7 +1,7 @@
 package com.greglturnquist.learningspringws;
 
-import com.greglturnquist.test.AckNetworkEvent;
-import com.greglturnquist.test.SendNetworkEvent;
+import com.greglturnquist.test.SendNetworkEventRequest;
+import com.greglturnquist.test.SendNetworkEventResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -16,16 +16,16 @@ public class NetworkEventConsumer {
 
 	private static final String URI = "http://greglturnquist.com/test";
 
-	@PayloadRoot(namespace = URI, localPart = "sendNetworkEvent")
+	@PayloadRoot(namespace = URI, localPart = "sendNetworkEventRequest")
 	@ResponsePayload
-	public AckNetworkEvent sendNetworkEvent(@RequestPayload SendNetworkEvent networkEvent) {
+	public SendNetworkEventResponse sendNetworkEvent(@RequestPayload SendNetworkEventRequest networkEvent) {
 
 		String message = "Received " + networkEvent.getHostname() + ":" +
 				networkEvent.getSeverity() + ":" + networkEvent.getDescription();
 
 		log.info(message);
 
-		AckNetworkEvent ack = new AckNetworkEvent();
+		SendNetworkEventResponse ack = new SendNetworkEventResponse();
 		ack.setStatus(message);
 		return ack;
 	}

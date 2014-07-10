@@ -1,7 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://greglturnquist.com/test"
 		   targetNamespace="http://greglturnquist.com/test">
 
-	<xs:element name="sendNetworkEvent">
+	<xs:element name="sendNetworkEventRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="hostname" type="xs:string" />
@@ -11,7 +11,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="ackNetworkEvent">
+	<xs:element name="sendNetworkEventResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="status" type="xs:string" />
