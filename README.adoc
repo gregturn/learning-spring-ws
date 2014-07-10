@@ -1,0 +1,11 @@
+== Learning Spring WS
+
+This project is a sample app used to experiment with Spring WS.
+
+=== To run
+
+. Checkout repo
+. `mvn compile` to generate XSD-driven classes
+. `mvn spring-boot:run` or run `Server.main()` directly from your IDE to launch the SOAP service
+. `curl --header "content-type: text/xml" -d @down.xml http://localhost:8080/ws > output.xml && xmllint --format output.xml && rm output.xml` to send a DOWN message
+. `curl --header "content-type: text/xml" -d @up.xml http://localhost:8080/ws > output.xml && xmllint --format output.xml && rm output.xml` to send an UP message
