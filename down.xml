@@ -1,11 +1,11 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-				  xmlns:network="http://greglturnquist.com/test">
+				  xmlns:test="http://greglturnquist.com/test">
 	<soapenv:Header/>
 	<soapenv:Body>
-		<network:sendNetworkEventRequest>
-			<hostname>router101</hostname>
-			<severity>5</severity>
-			<description>Ping failure</description>
-		</network:sendNetworkEventRequest>
+		<test:sendNetworkEventRequest>
+			<test:hostname>router101</test:hostname>
+			<test:severity>5</test:severity>
+			<test:description>Ping failure</test:description>
+		</test:sendNetworkEventRequest>
 	</soapenv:Body>
 </soapenv:Envelope>

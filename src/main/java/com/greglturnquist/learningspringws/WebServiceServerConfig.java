@@ -21,6 +21,7 @@ public class WebServiceServerConfig extends WsConfigurerAdapter {
 
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(ctx);
+		servlet.setTransformWsdlLocations(true);
 		return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 
@@ -29,7 +30,7 @@ public class WebServiceServerConfig extends WsConfigurerAdapter {
 
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("NetworkEventPort");
-		wsdl11Definition.setLocationUri("/networkevents/");
+		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://greglturnquist.com/test");
 		wsdl11Definition.setSchema(networkEventSchema);
 		return wsdl11Definition;
