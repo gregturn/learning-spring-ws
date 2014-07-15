@@ -15,7 +15,7 @@ public class Client {
 
 		NetworkEventClient networkEventClient = ctx.getBean(NetworkEventClient.class);
 		SendNetworkEventResponse response = networkEventClient.sendNetworkEvent();
-		log.info(response.toString());
+		log.info(response.getStatus());
 	}
 
 }
