@@ -25,7 +25,7 @@ public class WebServiceServerConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 
-	@Bean
+	@Bean(name = "network-events")
 	DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema networkEventSchema) {
 
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
