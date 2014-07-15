@@ -10,12 +10,16 @@ public class Client {
 
 	private static final Logger log = LoggerFactory.getLogger(Client.class);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ApplicationContext ctx = SpringApplication.run(NetworkEventConfiguration.class, args);
 
 		NetworkEventClient networkEventClient = ctx.getBean(NetworkEventClient.class);
-		SendNetworkEventResponse response = networkEventClient.sendNetworkEvent();
-		log.info(response.getStatus());
+
+//		SendNetworkEventResponse response = networkEventClient.sendNetworkEvent();
+//		log.info(response.getStatus());
+
+		SendNetworkEventResponse response2 = networkEventClient.sendNetworkEventDom();
+		log.info(response2.getStatus());
 	}
 
 }
