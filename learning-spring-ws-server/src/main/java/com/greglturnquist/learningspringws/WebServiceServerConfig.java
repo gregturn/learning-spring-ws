@@ -1,5 +1,6 @@
 package com.greglturnquist.learningspringws;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -12,7 +13,7 @@ import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor;
 import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
-import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswordValidationCallbackHandler;
+import org.springframework.ws.soap.security.xwss.callback.SimplePasswordValidationCallbackHandler;
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
@@ -68,9 +69,16 @@ public class WebServiceServerConfig extends WsConfigurerAdapter {
 	@Bean
 	XwsSecurityInterceptor securityInterceptor() {
 		XwsSecurityInterceptor securityInterceptor = new XwsSecurityInterceptor();
-		securityInterceptor.setCallbackHandler(new SpringPlainTextPasswordValidationCallbackHandler());
+		securityInterceptor.setCallbackHandler(callbackHandler());
 		securityInterceptor.setPolicyConfiguration(new ClassPathResource("securityPolicy.xml"));
 		return securityInterceptor;
+	}
+
+	@Bean
+	SimplePasswordValidationCallbackHandler callbackHandler() {
+		SimplePasswordValidationCallbackHandler callbackHandler = new SimplePasswordValidationCallbackHandler();
+		callbackHandler.setUsersMap(Collections.singletonMap("user", "password"));
+		return callbackHandler;
 	}
 
 	@Override
